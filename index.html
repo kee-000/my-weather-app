@@ -18,22 +18,11 @@
       <div class="weather-app-wrapper">
       <div class="weather-app">
 
-<form id="search-form" class="mb-3">
-  <div class="row">
-    <div class="col-9">
-  <input type="search" id="city-input" placeholder="Enter a city" class="form-control" autocomplete="off" />
-    </div>
-    <div class="col-3">
-  <input type="submit" value="Search" class="btn btn-info w-100" />
-  </div>
-</div>
-</form>
-
       <div class="overview">
         <h1 id="city">Toronto</h1>
         <ul>
-          <li>Last updated: <span id="date">Saturday 08:30</span></li>
-          <li id="description">Clear</li>
+          <li><span id="date">Current Time</span></li>
+          <li id="description">Current Conditions</li>
         </ul>
       </div>
       <div class="row">
@@ -51,11 +40,46 @@
           <ul>
             <li>Humidity: <span id="humidity"></span>%</li>
             <li>Wind: <span id="wind"></span> km/h</li>
+            <li>Precipitation: <span id="humidity"></span>%</li>
           </ul>
         </div>
       </div>
-    <footer class="page-footer">
-      <div class="container">
+</div>
+
+<div class="row weather-forecast" id="forecast">
+<div class="col-2">
+<h6>12:00</h6>
+<img src=""
+alt=""
+/>
+<div class="weather-forecast-temperature">
+<strong>22°</strong> 17°
+</div>
+</div>
+</div>
+
+<form id="search-form" class="mb-3">
+  <div class="row">
+    <div class="col-9">
+      <input type="search" id="city-input" placeholder="Enter a city" class="form-control" autocomplete="off" />
+    </div>
+    <div class="col-3">
+      <input type="submit" value="Search" class="btn btn-info w-100" />
+    </div>
+  </div>
+</form>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    SheQuotes
+  </div>
+  <div class="card-body">
+    <blockquote class=>
+      <p>There's no such thing as good weather, or bad weather. There's just weather and your attitude towards it.</p>
+      <footer class="blockquote-footer">Louise Hay</footer>
+    </blockquote>
+  
         <small
           ><a
             href="https://github.com/kee-000/my-weather-app.git"
