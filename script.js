@@ -67,7 +67,7 @@ function displayTemperature(response) {
   
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
@@ -83,7 +83,7 @@ for (let index = 0; index < 6; index++) {
   forecastElement.innerHTML += `
 <div class="col-2">
 <h6>${formatHours(forecast.dt * 1000)}</h6>
-<img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+<img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
 alt=""
 />
 <div class="weather-forecast-temperature">
