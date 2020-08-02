@@ -1,6 +1,14 @@
-let currentTime = new Date();
-let hours = currentTime.getHours();
-let minutes = currentTime.getMinutes();
+function formatDate(timestamp) {
+let date = new Date();
+
+let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
 let days = [
   "Sunday",
@@ -12,30 +20,50 @@ let days = [
   "Saturday",
 ];
 
-let day = days[currentTime.getDay()];
-let [month, date, year] = new Date().toLocaleDateString().split("/");
+let day = days[date.getDay()];
 let dateElement = document.querySelector("#date");
-dateElement.innerHTML = `${day} ${month} ${date}, ${year} ${hours}:${minutes}`;
+dateElement.innerHTML = `${day} ${hours}:${minutes}`;
+
+return `${day} ${hours}:${minutes}`;
+return `${day} ${formatHours(timestamp)}`;
+}
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
+}
 
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let temperature = Math.round(response.data.main.temp);
   temperatureElement.innerHTML = `${temperature}`;
+  let feelsElement = document.querySelector("#feels");
 
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
+  let dateElement = document.querySelector("#date");
   let forecastElement = document.querySelector("#forecast");
   let iconElement = document.querySelector("#icon");
 
   celsiusTemperature = response.data.main.temp;
-
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  feelsElement.innerHTML = Math.round(response.data.main.feels_like);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
   
   iconElement.setAttribute(
     "src",
@@ -46,12 +74,15 @@ function displayTemperature(response) {
 
 function displayForecast(response) {
 let forecastElement = document.querySelector("#forecast");
-let forecast = response.data.list[0];
-console.log(forecast);
+forecastElement.innerHTML = null;
+let forecast = null;
+console.log(response);
 
-forecastElement.innerHTML = `
+for (let index = 0; index < 6; index++) {
+  let forecast = response.data.list[index];
+  forecastElement.innerHTML += `
 <div class="col-2">
-<h6>${forecast.dt}</h6>
+<h6>${formatHours(forecast.dt * 1000)}</h6>
 <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
 alt=""
 />
@@ -59,6 +90,7 @@ alt=""
 <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
 </div>
 `;
+}
 }
 
 function getCity(city) {
@@ -104,4 +136,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-getCity("Toronto");
+getCity("Montego Bay");

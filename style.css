@@ -1,8 +1,9 @@
 body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   background-image: url("https://wallup.net/wp-content/uploads/2017/11/17/243042-mountain-minimalism.jpg");
-  background-size: cover;
   background-repeat: no-repeat;
+  background-size: cover;
+  
 }
 
 h1 {
@@ -10,6 +11,10 @@ h1 {
   font-size: 24px;
   font-weight: 100;
   line-height: 28px;
+  margin-bottom: 0;
+}
+
+h6 {
   margin-bottom: 0;
 }
 
@@ -29,9 +34,9 @@ li {
 }
 
 .weather-app {
-  max-width: 600 px;
   margin: 30px auto;
-  padding: 15px;
+  max-width: 600 px;
+  
 }
 
 .overview {
@@ -52,6 +57,18 @@ li {
   line-height: 1;
 }
 
+.weather-forecast {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.weather-forecast img {
+  display: block;
+  height: 48px;
+  vertical-align: middle;
+  width: 48px;
+}
+
 .weather-temperature .active {
   color: rgb(33, 33, 33);
   cursor: default;
@@ -62,9 +79,13 @@ li {
 }
 
 .units {
-  position: relative;
   font-size: 16px;
+  position: relative;
   top: -34px;
+}
+
+.search-form {
+  padding-top: 12px;
 }
 
 .page-footer {
